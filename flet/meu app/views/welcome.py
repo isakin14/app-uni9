@@ -1,8 +1,8 @@
 import flet as ft
-from .signup import signup_view
 
 def welcome_view(page: ft.Page):
     def go_to_signup(e):
+        from .signup import signup_view
         page.views.append(signup_view(page))
         page.update()
     
@@ -11,10 +11,10 @@ def welcome_view(page: ft.Page):
             ft.Container(
                 content=ft.Column(
                     [
-                        ft.Image(src="C:/Users/Isaki/Downloads/icone.png", width=210, height=210),
+                        ft.Image(src="C:/Users/Isaki/Desktop/APP/flet/recursos/Icone4.png", width=230, height=230),
                         ft.Column(
                             controls=[],
-                            height=20,
+                            height=25,
                         ),
                         ft.ElevatedButton(
                             "ENTRAR", 
@@ -24,7 +24,19 @@ def welcome_view(page: ft.Page):
                             width=200,
                             height=50,
                         ),
-                        ft.Text("Clique para entrar", color="gray", size=12),
+                        ft.Container(
+                            content=ft.TextButton(
+                                "Criar conta",
+                                on_click=lambda e: print("Redirecionar para criação de conta"),
+                                style=ft.ButtonStyle(
+                                    padding=ft.padding.all(0),
+                                    shape=ft.RoundedRectangleBorder(radius=0),
+                                    bgcolor=None
+                                ),
+                            ),
+                            alignment=ft.alignment.center,
+                            padding=ft.padding.only(top=0),
+                        ),
                     ],
                     alignment=ft.MainAxisAlignment.CENTER,
                     horizontal_alignment=ft.CrossAxisAlignment.CENTER,
