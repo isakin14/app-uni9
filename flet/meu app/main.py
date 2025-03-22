@@ -14,6 +14,10 @@ def main(page: ft.Page):
         "MinhaFonte": "C:/Users/isaki/Desktop/APP/flet/recursos/Montserrat-Regular.ttf"
     }
 
+    page.fonts = {
+        "FonteNomeApp": "C:/Users/Isaki/Desktop/APP/flet/recursos/Outfit-Medium.ttf"
+    }
+
     page.theme = ft.Theme(font_family="MinhaFonte")
 
     page.views.append(welcome_view(page))

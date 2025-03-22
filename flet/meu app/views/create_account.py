@@ -1,6 +1,6 @@
 import flet as ft
 
-def signup_view(page: ft.Page):
+def create_account_view(page: ft.Page):
     def go_to_welcome(e):
         from .welcome import welcome_view
         page.views.append(welcome_view(page))
@@ -13,11 +13,17 @@ def signup_view(page: ft.Page):
                     [
                         ft.Image(src="C:/Users/Isaki/Desktop/APP/flet/recursos/Icone4.png", width=110, height=110),
                         ft.Container(
-                            content=ft.Text("Login", size=30, weight="bold", text_align=ft.TextAlign.CENTER),
+                            content=ft.Text("Criar Conta", size=30, weight="bold", text_align=ft.TextAlign.CENTER),
                             padding=ft.padding.only(bottom=30)
                         ),
                         ft.TextField(
                             label="Usuário", 
+                            width=330,
+                            autofocus=True,
+                            content_padding=ft.padding.symmetric(vertical=10, horizontal=12)
+                        ),
+                        ft.TextField(
+                            label="E-mail",
                             width=330,
                             autofocus=True,
                             content_padding=ft.padding.symmetric(vertical=10, horizontal=12)
@@ -29,33 +35,22 @@ def signup_view(page: ft.Page):
                             width=330,
                             content_padding=ft.padding.symmetric(vertical=10, horizontal=12),
                         ),
-                        ft.Container(height=5),
-                        ft.Container(
-                            content=ft.Switch(label="Manter Login", scale=0.9),
-                            alignment=ft.alignment.center_left,
-                            padding=ft.padding.only(left=15)
+                        ft.TextField(
+                            label="Confirmar Senha",
+                            password=True,
+                            can_reveal_password=True,
+                            width=330,
+                            content_padding=ft.padding.symmetric(vertical=10, horizontal=12),
                         ),
+                        ft.Container(height=5),
                         ft.Container(
                             content=ft.Checkbox(label="Aceito os termos de privacidade", value=False),
                             alignment=ft.alignment.center_left,
                             padding=ft.padding.only(left=23)
                         ),
                         ft.Container(
-                            content=ft.ElevatedButton("Entrar", width=200, height=50, bgcolor="green", color="white"),
+                            content=ft.ElevatedButton("Cadastrar", width=200, height=50, bgcolor="green", color="white"),
                             padding=ft.padding.only(top=23)
-                        ),
-                        ft.Container(
-                            content=ft.TextButton(
-                                "Esqueceu a senha?",
-                                on_click=lambda e: print("Redirecionar para recuperação de senha"),
-                                style=ft.ButtonStyle(
-                                    padding=ft.padding.all(0),
-                                    shape=ft.RoundedRectangleBorder(radius=0),
-                                    bgcolor=None
-                                ),
-                            ),
-                            alignment=ft.alignment.center,
-                            padding=ft.padding.only(top=0),
                         ),
                         ft.Container(
                             content=ft.IconButton(
