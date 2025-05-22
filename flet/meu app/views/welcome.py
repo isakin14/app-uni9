@@ -11,8 +11,19 @@ def welcome_view(page: ft.Page):
         page.views.append(create_account_view(page))
         page.update()
     
-    def login_with_google(e):
-        print("Login com Google clicado!")
+    def login_sso(e):
+        KEYCLOAK_AUTH_URL = "https://seu-keycloak.com/realms/sua-realm/protocol/openid-connect/auth"
+        CLIENT_ID = "seu-client-id"
+        REDIRECT_URI = "https://seu-backend.com/callback"
+
+        url = (
+            f"{KEYCLOAK_AUTH_URL}"
+            f"?client_id={CLIENT_ID}"
+            f"&redirect_uri={REDIRECT_URI}"
+            f"&response_type=code"
+            f"&scope=openid"
+        )
+        page.launch_url(url)
 
     return ft.View(
         "/", [
@@ -20,7 +31,7 @@ def welcome_view(page: ft.Page):
                 content=ft.Column(
                     [
                         ft.Image(
-                            src="C:/Users/Isaki/Desktop/APP/flet/recursos/Icone4.png",
+                            src="assets/phishing.png",
                             width=230,
                             height=230
                         ),
@@ -50,14 +61,14 @@ def welcome_view(page: ft.Page):
                             width=200,
                             height=50,
                         ),
-                        ft.Text("Ou:", color="gray", size=13),
+                        ft.Text("Login SSO:", color="gray", size=13),
                         ft.Container(
                             content=ft.Image(
-                                src="C:/Users/Isaki/Desktop/APP/flet/recursos/google_icon.svg",
+                                src="assets/e-learning-svgrepo-com.svg",
                                 width=40,
                                 height=40
                             ),
-                            on_click=login_with_google,
+                            on_click=login_sso,
                             border_radius=10,
                             padding=5,
                             ink=True
